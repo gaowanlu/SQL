@@ -1,4 +1,4 @@
-/*                                           第三课(过滤数据)                                                         */
+/*                                           第四课(WHERE子句)                                                         */
 # WHERE子句
 USE sql_inventory;
 SELECT *
