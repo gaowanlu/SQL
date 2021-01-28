@@ -25,6 +25,7 @@ FROM products;
 #执行算数计算
 SELECT name,quantity_in_stock*unit_price AS quantity_in_stockmulunit_price
 FROM products;
+
 #SQL算数操作符 加+ 减- 乘* 除/
 SELECT curdate(),name,quantity_in_stock/unit_price AS quantity_in_stockdivunit_price
 FROM products;
