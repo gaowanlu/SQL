@@ -1,5 +1,5 @@
 # LearnSQL_2021
-学习SQL语句
+SQL语句
 ### 章节
 * 准备 : 通过SQL Course Materials内的sql脚本生成数据库文件
 * 第 1 节与第 2 节 :  1 class  and 2 class.sql-数据检索
@@ -10,3 +10,6 @@
 * 第 7 节:7 class -创建计算字段
 * 第 8 节:8 class-使用函数处理数据
 * 第 9 节:9 class-汇总数据
+* 第 10 节:10 class-分组数据
+
+
