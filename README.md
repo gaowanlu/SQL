@@ -2,7 +2,7 @@
 SQL语句
 ### 章节
 * 准备 : 通过SQL Course Materials内的sql脚本生成数据库文件
-* 第 1 节与第 2 节 :  1 class  and 2 class.sql-数据检索
+* 第 1 节与第 2 节 :  1 class  and 2 class-数据检索
 * 第 3 节:3 class-排序检索数据
 * 第 4 节:4 class-WHERE子句
 * 第 5 节:5 class -高级数据过滤
