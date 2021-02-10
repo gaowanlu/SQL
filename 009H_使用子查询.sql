@@ -37,7 +37,4 @@ FROM film_text;
 从表film_text拿title 与film_id 在表film中拿 film_text每行的film_id对应的description
 */
 
-
-
-
 # 
