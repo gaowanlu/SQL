@@ -32,9 +32,9 @@ WHERE NOT (quantity_in_stock IN (98,26,6));
 # BETWEEN AND 操作符
 SELECT *
 FROM products
-WHERE BETWEEN 6 AND 90;
+WHERE　quantity_in_stock BETWEEN 6 AND 90;
 
-
-
-
-
+# IS NULL | IS NOT NULL
+SELECT *
+FROM　products
+WHERE　quantity_in_stock　IS NOT NULL;-- 同理 IS NULL
