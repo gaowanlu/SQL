@@ -26,7 +26,7 @@ FROM new_table;
 #-覆盖(或更新)视图，必须先删除它，然后再重新创建
 DROP VIEW new_table_view;
 
-#创建视图（视图是在SQL解析时定义的虚拟的表，视图并不存在数据库）
+#创建视图（视图是在SQL解析时定义的虚拟的表，视图并不存在数据库,但对视图的数据修改会同步操作表，视图像接口减少耦合）
 CREATE VIEW new_table_view AS
 SELECT *
 FROM new_table;

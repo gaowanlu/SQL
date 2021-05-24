@@ -37,4 +37,14 @@ FROM film_text;
 从表film_text拿title 与film_id 在表film中拿 film_text每行的film_id对应的description
 */
 
-# 
+# IF()
+SELECT 
+IF (COUNT(*)>2,'yes','no') AS u; 
+
+#CASE WHEN
+SELECT
+CASE WHEN COUNT(*)>100 THEN '>100'
+    WHEN COUNT(*)<10 THEN '<10'
+    ELSE 'NULL'
+END
+AS judge;

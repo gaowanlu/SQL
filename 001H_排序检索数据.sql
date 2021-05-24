@@ -36,6 +36,11 @@ SELECT *
 FROM products
 ORDER BY 3 DESC,4 DESC;
 
+#使用计算字段在ORDER BY
+SELECT *
+FROM products
+ORDER BY quantity_in_stock * unit_price DESC;
+
 
 
 

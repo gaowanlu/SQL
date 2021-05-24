@@ -9,7 +9,9 @@ FROM clients;
 
 #更规范的写法
 #INSERT INTO clients(client_id,name,address,city,state,phone)
-#VALUES(11,"刘微","china","anyang","CN","133-456-8956");
+#VALUES
+#(11,"刘微","china","anyang",DEFAULT,NULL),
+#(13,"刘","china","anyang",DEFAULT,NULL);
 #插入部分行
 #只需要使用上面更规范的写法，进而可以指定哪些插入值
 
