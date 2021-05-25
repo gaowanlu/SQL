@@ -1,4 +1,4 @@
-/*                                                     使用存储过程                                                      */
+/*                                                     使用存储过程与函数                                                      */
 DELIMITER //
 #删除存储过程
 DROP procedure test;
@@ -9,21 +9,67 @@ DROP procedure test;
 #INOUT 输入输出参数：既表示调用者向过程传入值，又表示过程向调用者传出值（值只能是变量）
 
 #创建存储过程
-create procedure test(in a integer,in b integer)
+DELIMITER $$
+create procedure test(in a integer,in b integer,OUT num INTEGER)
 BEGIN
 	SELECT *
     FROM clients;
     set a=2*a;
     SELECT @a;#用户变量
     SELECT a+b;
-END;//
+    num=a+b;
+END$$
+DELIMITER ;
+SET @num=0;
+CALL test(1,2,@num);
+SELECT @num;
+#删除存储过程
+DROP PROCEDURE IF EXISTS test;
+
+#IF THEN ELSE END IF
+DELIMITER $$
+create procedure test(in a integer,in b integer)
+BEGIN
+    IF a IS NULL THEN
+        SET a=2;
+    ELSE
+        SET b=100;
+    END IF;
+	SELECT *
+    FROM clients;
+    set a=2*a;
+    SELECT @a;#用户变量
+    SELECT a+b;
+END$$
+DELIMITER ;
+#删除存储过程
+DROP PROCEDURE IF EXISTS test;
+
+#使用SIGNAL抛出异常
+BEGIN
+    IF pay<=0 THEN
+    SIGNAL SQLSTATE '22003'
+    SET MESSAGE_TEXT='Invalid pay amount';
+    END IF;
+END
 
 #变量
-
+--    |-User or Session variables
+--    |SET @num=10;set @a=20;
+--    |-Local variable
+--    |DECLARE risk FLOAT4 DEFAULT 0;
+--    SELECT COUNT(*),SUM(invoice_total)
+--    INTO @num,@a
+--    FROM invoices;
 #局部变量的声明一定放在存储过程的开始
 #DECLARE variable_name [,variable_name...] datatype [DEFAULT value];
 #形如MySQL 的数据类型，如: int, float, date,varchar(length)
 #DECLARE l_varchar varchar(255) DEFAULT 'This will not be padded';
+
+
+
+
+
 
 #变量赋值
 #SET 变量名 = 表达式值 [,variable_name = expression ...]
@@ -91,3 +137,21 @@ call test(2,2);
 
 
 
+-- FUNCTIONS
+-- 建立自己的函数：像聚集函数一样例如MIN MAX SUM等
+-- 函数与存储过程很像，但是区别就是，函数只能返回单一的值
+-- 与存储过程不同，函数不能返回有行有列的结果集
+CREATE FUNCTION get_risk_factor_for_client
+(
+    client_id INT
+)
+RETURNS INTEGER
+--DETERMINISTIC
+READS SQL DATA
+MODIFIES SQL DATA
+BEGIN
+    RETURN 1;
+END
+
+--删除函数
+DROP FUNCTION IF EXISTS get_risk_factor_for_client;
