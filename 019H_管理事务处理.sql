@@ -1,4 +1,9 @@
 /*                                                     管理事务处理                                                      */
+
+-- 原子性 一致性 隔离性 持久性
+
+
+
 USE gaowanlu;
 #如何利用COMMIT和ROLLBACK语句管理事务处理;
 

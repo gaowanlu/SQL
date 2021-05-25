@@ -1,0 +1,33 @@
+-- 事务隔离等级
+SHOW VARIABLES LIKE 'transaction_isolation';
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+--  也可以在当前的session或者连接中修改隔离等级;
+
+
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+-- 也可以为所有session的所有事务设置全局等级
+SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+
+
+
+
+--未提交读取等级:可以读到另一个事务为提交 但已经改变的数据 未提交读取是最低的隔离等级
+USE db;
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+
+
+--提交读取等级:解决读脏数据问题  只能读取提交完毕的数据  但可能得到不可重复，或者说不稳定的读取
+USE db;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
+--可重复读取等级
+USE db;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+-- 幻读用 可重复读取等级 都不能解决
+
+-- 序列化等级
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
