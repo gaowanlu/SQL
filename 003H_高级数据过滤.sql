@@ -38,3 +38,4 @@ WHERE　quantity_in_stock BETWEEN 6 AND 90;
 SELECT *
 FROM　products
 WHERE　quantity_in_stock　IS NOT NULL;-- 同理 IS NULL
+

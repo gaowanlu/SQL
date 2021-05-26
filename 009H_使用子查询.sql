@@ -48,3 +48,11 @@ CASE WHEN COUNT(*)>100 THEN '>100'
     ELSE 'NULL'
 END
 AS judge;
+
+--FROM中的子查询
+SELECT *
+FROM(
+    SELECT client_id,name,...
+    FROM ..
+) AS kkk
+WHERE kkk........

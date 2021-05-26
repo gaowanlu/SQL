@@ -54,3 +54,50 @@ GROUP BY 分组过滤
 HAVING 组级过滤
 ORDER BY 输出排序顺序
 */
+
+--WITH ROLLUP
+SELECT client_id,SUM(invoice_total) AS total_sales
+FROM invoices
+GROUP BY client_id WITH ROLLUP;
+client_id      total_sales
+1                802.89
+2                101.79
+3                705.90
+5                980.02
+                2590.60
+
+    
+-- ALL KEYWORD
+SELECT *
+FROM invoices
+WHERE invoice_total>(
+    SELECT MAX(invoice_total)
+    FROM invoices
+    WHERE client_id=3
+);
+
+SELECT *
+FROM invoices
+WHERE invoice_total>ALL(
+    SELECT invoice_total
+    FROM invoices
+    WHERE client_id=2;
+);
+
+-- ANY 
+SELECT *
+FROM invoices
+WHERE invoice_total>ANY(
+    SELECT invoice_total
+    FROM invoices
+    WHERE client_id=2;
+);
+
+--EXISTS
+SELECT *
+FROM clients c
+WHERE EXISTS(  
+    SELECT client_id
+    FROM invoices
+    WHERE client_id=c.client_id
+);
